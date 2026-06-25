@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Wedding">
+  <div class="bg-sand min-h-screen">
+    <nav class="w-full h-8 bg-wine relative z-10"></nav>
+
+    <section class="flex relative max-w-[900px] mx-auto z-10">
+      <!-- Left column — image drives the row height -->
+      <div class="w-[42%] shrink-0 relative z-10">
+        <img
+          src="/assets/lovers.svg"
+          alt=""
+          aria-hidden="true"
+          class="w-full h-auto block translate-x-[8%]"
+        />
+      </div>
+
+      <!-- Right column — content -->
+      <main class="flex-1 relative z-0 flex items-center justify-center">
+        <!-- Top left: star-1 -->
+        <img
+          src="/assets/star-1.svg"
+          alt=""
+          aria-hidden="true"
+          class="absolute -top-6 left-0 w-[35%] h-[35%]"
+        />
+
+        <!-- Top right: kupidons, flipped -->
+        <img
+          src="/assets/kupidons.png"
+          alt=""
+          aria-hidden="true"
+          class="absolute top-4 right-6 w-[45%] -scale-x-100 -rotate-[18deg]"
+        />
+
+        <!-- Center: heading -->
+        <p
+          class="font-playfair font-bold text-center px-8 whitespace-nowrap"
+          style="font-size: clamp(1.4rem, 3vw, 3rem);"
+        >
+          Mes sakome <span class="text-wine">taip</span>!
+        </p>
+
+        <!-- Above cloud: star-5 -->
+        <img
+          src="/assets/star-5.svg"
+          alt=""
+          aria-hidden="true"
+          class="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[35%] h-[35%]"
+        />
+      </main>
+
+      <!-- Cloud — bleeds off the right edge -->
+      <img
+        src="/assets/cloud-3.png"
+        alt=""
+        aria-hidden="true"
+        class="absolute -bottom-[80%] right-[-30%] w-[90%]"
+      />
+    </section>
+
+    <!-- Red section — slides under the hero -->
+    <section
+      class="relative max-w-[900px] mx-auto h-[255px] bg-wine mt-[5%] overflow-hidden"
+      style="z-index: 0;"
+    >
+      <!-- Centered content column -->
+      <div
+        class="absolute top-[3%] left-0 right-0 flex flex-col items-center gap-2 px-8 text-center"
+      >
+        <p
+          class="font-raleway text-sand"
+          style="font-size: clamp(0.8rem, 2vw, 1.4rem);"
+        >
+          Su dideliu džiaugsmu norime<br />pakviesti Jus į savo vestuves
+        </p>
+        <img
+          src="/assets/calendar.png"
+          alt="Data"
+          class="w-[40%] max-w-[200px]"
+        />
+        <p
+          class="font-raleway text-sand"
+          style="font-size: clamp(0.8rem, 2vw, 1.4rem);"
+        >
+          Labai jūsų lauksime!
+        </p>
+      </div>
+      <img
+        src="/assets/disco.svg"
+        alt=""
+        aria-hidden="true"
+        class="absolute w-[28%] -top-[25%]"
+      />
+      <img
+        src="/assets/disco-long.svg"
+        alt=""
+        aria-hidden="true"
+        class="absolute w-[22%] left-[15%]"
+      />
+      <img
+        src="/assets/disco.svg"
+        alt=""
+        aria-hidden="true"
+        class="absolute w-[30%] left-[72%]"
+      />
+    </section>
+
+    <!-- Sand section -->
+    <section class="relative max-w-[900px] mx-auto h-[800px] bg-sand">
+      <img
+        src="/assets/star-1.svg"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-0 left-[80%] w-[20%]"
+      />
+    </section>
+  </div>
+</Layout>
