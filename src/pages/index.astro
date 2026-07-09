@@ -6,69 +6,51 @@ import Layout from "../layouts/Layout.astro";
   <div class="bg-sand min-h-screen">
     <nav class="w-full h-8 bg-wine relative z-10"></nav>
 
-    <section class="flex relative max-w-[900px] mx-auto z-10">
-      <!-- Left column — image drives the row height -->
-      <div class="w-[42%] shrink-0 relative z-10">
+    <section class="relative max-w-[900px] mx-auto z-10 min-h-[calc(100svh-2rem)]">
+      <!-- ===== decorations, anchored to the full-height hero panel ===== -->
+      <!-- top-left star -->
+      <img src="/assets/star-1.svg" alt="" aria-hidden="true"
+        class="absolute top-[6%] left-[9%] w-[25%] pointer-events-none" />
+      <!-- top-right cupid, facing inward -->
+      <img src="/assets/kupidons.png" alt="" aria-hidden="true"
+        class="absolute top-[2%] right-[10%] w-[50%] -scale-x-100 -rotate-12 pointer-events-none" />
+      <!-- upper-left cloud -->
+      <img src="/assets/cloud-8-t.png" alt="" aria-hidden="true"
+        class="absolute top-[15%] left-[10%] w-[40%] pointer-events-none" />
+      <!-- star to the right of the mirror -->
+      <img src="/assets/star-2.svg" alt="" aria-hidden="true"
+        class="absolute top-[58%] right-[1%] w-[25%] pointer-events-none" />
+      <!-- small star below the heading, on the left -->
+      <img src="/assets/star-5.svg" alt="" aria-hidden="true"
+        class="absolute bottom-[16%] left-[6%] w-[25%] pointer-events-none" />
+      <!-- wide cloud bleeding off the bottom -->
+      <img src="/assets/cloud-3-t.png" alt="" aria-hidden="true"
+        class="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[70%] pointer-events-none" />
+
+      <!-- ===== centered content: mirror + heading ===== -->
+      <div class="relative z-10 flex flex-col items-center justify-center min-h-[calc(100svh-2rem)] px-6">
         <img
           src="/assets/lovers.svg"
-          alt=""
-          aria-hidden="true"
-          class="w-full h-auto block translate-x-[8%]"
+          alt="Jaunieji"
+          class="top-[20%] w-[95%] max-w-[360px] h-auto block"
         />
-      </div>
-
-      <!-- Right column — content -->
-      <main class="flex-1 relative z-0 flex items-center justify-center">
-        <!-- Top left: star-1 -->
-        <img
-          src="/assets/star-1.svg"
-          alt=""
-          aria-hidden="true"
-          class="absolute -top-6 left-0 w-[35%] h-[35%]"
-        />
-
-        <!-- Top right: kupidons, flipped -->
-        <img
-          src="/assets/kupidons.png"
-          alt=""
-          aria-hidden="true"
-          class="absolute top-4 right-6 w-[45%] -scale-x-100 -rotate-[18deg]"
-        />
-
-        <!-- Center: heading -->
         <p
-          class="font-playfair font-bold text-center px-8 whitespace-nowrap"
-          style="font-size: clamp(1.4rem, 3vw, 3rem);"
+          class="font-playfair font-bold text-center leading-[1.05]"
+          style="font-size: clamp(2.2rem, 9vw, 4rem);"
         >
-          Mes sakome <span class="text-wine">taip</span>!
+          Mes sakome<br /><span class="text-wine">taip</span>!
         </p>
-
-        <!-- Above cloud: star-5 -->
-        <img
-          src="/assets/star-5.svg"
-          alt=""
-          aria-hidden="true"
-          class="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[35%] h-[35%]"
-        />
-      </main>
-
-      <!-- Cloud — bleeds off the right edge -->
-      <img
-        src="/assets/cloud-3.png"
-        alt=""
-        aria-hidden="true"
-        class="absolute -bottom-[80%] right-[-30%] w-[90%]"
-      />
+      </div>
     </section>
 
     <!-- Red section — slides under the hero -->
     <section
-      class="relative max-w-[900px] mx-auto h-[255px] bg-wine mt-[5%] overflow-hidden"
+      class="relative max-w-[900px] mx-auto min-h-[100svh] bg-wine overflow-hidden flex flex-col items-center justify-center"
       style="z-index: 0;"
     >
       <!-- Centered content column -->
       <div
-        class="absolute top-[3%] left-0 right-0 flex flex-col items-center gap-2 px-8 text-center"
+        class="relative z-10 flex flex-col items-center gap-4 px-8 text-center"
       >
         <p
           class="font-raleway text-sand"
@@ -92,30 +74,150 @@ import Layout from "../layouts/Layout.astro";
         src="/assets/disco.svg"
         alt=""
         aria-hidden="true"
-        class="absolute w-[28%] -top-[25%]"
+        class="absolute w-[28%] top-0 left-[4%]"
       />
       <img
         src="/assets/disco-long.svg"
         alt=""
         aria-hidden="true"
-        class="absolute w-[22%] left-[15%]"
+        class="absolute w-[22%] top-0 left-[40%]"
       />
       <img
         src="/assets/disco.svg"
         alt=""
         aria-hidden="true"
-        class="absolute w-[30%] left-[72%]"
+        class="absolute w-[30%] top-0 left-[68%]"
       />
     </section>
 
-    <!-- Sand section -->
-    <section class="relative max-w-[900px] mx-auto h-[800px] bg-sand">
-      <img
-        src="/assets/star-1.svg"
-        alt=""
-        aria-hidden="true"
-        class="absolute top-0 left-[80%] w-[20%]"
-      />
+    <!-- ===== PANEL 3: Detalės + Greetings + RSVP (min one screen, grows taller) ===== -->
+    <div class="min-h-[100svh]">
+    <!-- ===== DETALĖS + schedule ===== -->
+    <section class="relative max-w-[900px] mx-auto px-6 pt-12 pb-10">
+      <!-- two stars flanking the heading on the left -->
+      <img src="/assets/star-5.svg" alt="" aria-hidden="true"
+        class="absolute top-[12%] left-[8%] w-[25%] rotate-[25deg] pointer-events-none" />
+      <!-- star top-right, above the cat -->
+      <img src="/assets/star-1.svg" alt="" aria-hidden="true"
+        class="absolute top-[2%] right-[9%] w-[25%] -rotate-12 pointer-events-none" />
+      <!-- star lower-right, by the schedule -->
+      <img src="/assets/star-5.svg" alt="" aria-hidden="true"
+        class="absolute bottom-[7%] right-[7%] w-[25%] pointer-events-none" />
+
+      <h2
+        class="font-playfair font-bold text-center tracking-[0.15em] relative z-10"
+        style="font-size: clamp(2rem, 7vw, 3.5rem);"
+      >
+        DETALĖS
+      </h2>
+
+      <!-- ginger cat lounging on a cloud, upper right -->
+      <div class="absolute right-[1%] top-[35%] w-[44%] pointer-events-none">
+        <img src="/assets/cloud-2-t.png" alt="" aria-hidden="true" class="w-full" />
+        <img src="/assets/ginger-cat-t.png" alt="" aria-hidden="true"
+          class="absolute -bottom-[30%] left-1/2 -translate-x-1/2 w-[86%] max-w-[250px]" />
+      </div>
+
+      <!-- schedule -->
+      <div class="relative z-10 flex flex-col items-center text-center gap-7 pt-[30%] sm:pt-[24%]">
+        <div>
+          <p class="font-raleway font-bold" style="font-size: clamp(1.1rem, 3vw, 1.6rem);">
+            14:00 – Santuoka
+          </p>
+          <p class="font-raleway text-neutral-800" style="font-size: clamp(0.85rem, 2.2vw, 1.15rem);">
+            Kauno Švč. Mergelės Ėmimo į<br />dangų bažnyčia (Vytauto Didžiojo)
+          </p>
+        </div>
+        <div>
+          <p class="font-raleway font-bold" style="font-size: clamp(1.1rem, 3vw, 1.6rem);">
+            17:00 – Šventė
+          </p>
+          <p class="font-raleway text-neutral-800" style="font-size: clamp(0.85rem, 2.2vw, 1.15rem);">
+            Vynvytis Studio<br />R. Kalantos g. 34A, Kaunas
+          </p>
+        </div>
+      </div>
+
+      <!-- bushy cloud bottom-left -->
+      <img src="/assets/cloud-6-t.png" alt="" aria-hidden="true"
+        class="absolute -bottom-[2%] -left-[6%] w-[34%] pointer-events-none" />
     </section>
+
+    <!-- ===== Greetings + dress code + gift ===== -->
+    <section class="relative max-w-[900px] mx-auto px-6 py-10">
+      <!-- big cloud, upper right -->
+      <img src="/assets/cloud-8-t.png" alt="" aria-hidden="true"
+        class="absolute top-[2%] -right-[14%] w-[40%] pointer-events-none" />
+      <!-- big puffy star lower-left -->
+      <img src="/assets/star-1.svg" alt="" aria-hidden="true"
+        class="absolute top-[42%] left-[4%] w-[25%] pointer-events-none" />
+      <!-- 5-point star lower-right -->
+      <img src="/assets/star-2.svg" alt="" aria-hidden="true"
+        class="absolute top-[60%] right-[7%] w-[25%] pointer-events-none" />
+
+      <div class="relative z-10 flex flex-col items-center text-center gap-9">
+        <p class="font-raleway" style="font-size: clamp(1rem, 2.6vw, 1.4rem);">
+          Sveikinimai vyks šventėje!
+        </p>
+
+        <div class="flex flex-col items-center gap-4">
+          <p class="font-raleway" style="font-size: clamp(1rem, 2.6vw, 1.4rem);">
+            Dress code – spalvos:
+          </p>
+          <div class="flex items-center gap-4">
+            {[ '#D1562D', '#F49FB8', '#1A1A1A', '#6F6E2A' ].map((c) => (
+              <svg viewBox="0 0 100 100" class="w-9 h-9 sm:w-11 sm:h-11" aria-hidden="true">
+                <path
+                  d="M50 3 L61 39 L97 50 L61 61 L50 97 L39 61 L3 50 L39 39 Z"
+                  fill={c}
+                  stroke="#1A1A1A"
+                  stroke-width="4"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            ))}
+          </div>
+        </div>
+
+        <p class="font-raleway text-neutral-800 max-w-[28rem]" style="font-size: clamp(0.9rem, 2.3vw, 1.2rem);">
+          Geriausia dovana – Jūsų buvimas šalia…ir ta, kuri telpa į vokelį.
+          Gėlės – tegul jos žydi pievose!
+        </p>
+      </div>
+
+      <!-- tall cloud bottom-left -->
+      <img src="/assets/cloud-4-t.png" alt="" aria-hidden="true"
+        class="absolute -bottom-[4%] -left-[4%] w-[26%] pointer-events-none" />
+    </section>
+
+    <!-- ===== RSVP + closing ===== -->
+    <section class="relative max-w-[900px] mx-auto px-6 pt-8 pb-0">
+      <div class="relative z-10 flex flex-col items-center text-center gap-7">
+        <!-- shooting star between the date and the button, on the left -->
+        <img src="/assets/star-3.svg" alt="" aria-hidden="true"
+          class="absolute left-[14%] top-[36%] w-[25%] -rotate-6 pointer-events-none" />
+        <p class="font-raleway" style="font-size: clamp(0.95rem, 2.4vw, 1.25rem);">
+          Atsakymų lauksime iki 2026 m.<br />liepos 1 d.
+        </p>
+
+        <!-- TODO: point href at your RSVP form (Google Forms / Typeform / mailto) -->
+        <a
+          href="#rsvp"
+          class="inline-block bg-wine text-sand font-playfair font-bold tracking-[0.2em] rounded-full shadow-md hover:brightness-110 transition px-16 py-3"
+          style="font-size: clamp(1.3rem, 4vw, 2rem);"
+        >
+          RSVP
+        </a>
+      </div>
+
+      <!-- fat cat snoozing on a cloud at the very bottom -->
+      <div class="relative z-0 mt-6 ml-[2%] w-[64%] max-w-[440px]">
+        <img src="/assets/cloud-3-t.png" alt="" aria-hidden="true" class="w-full" />
+        <img src="/assets/fat-cat-t.png" alt="" aria-hidden="true"
+          class="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[92%]" />
+      </div>
+    </section>
+    </div>
+    <!-- ===== end PANEL 3 ===== -->
   </div>
 </Layout>
