@@ -3,7 +3,13 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Wedding">
-  <div class="bg-sand min-h-screen">
+  <!-- desktop backdrop: pure-CSS cartoon velvet curtain filling the gutters beside the phone canvas -->
+  <div class="curtain relative min-h-screen w-full flex justify-center">
+    <!-- phone-width canvas — a CSS container, so all cqw font sizes scale to THIS width, not the browser window -->
+    <div
+      class="relative w-full max-w-[480px] bg-sand overflow-hidden shadow-2xl"
+      style="container-type: inline-size;"
+    >
     <nav class="w-full h-8 bg-wine relative z-10"></nav>
 
     <section class="relative max-w-[900px] mx-auto z-10 min-h-[calc(100svh-2rem)]">
@@ -36,16 +42,17 @@ import Layout from "../layouts/Layout.astro";
         />
         <p
           class="font-playfair font-bold text-center leading-[1.05]"
-          style="font-size: clamp(2.2rem, 9vw, 4rem);"
+          style="font-size: clamp(2.2rem, 9cqw, 4rem);"
         >
           Mes sakome<br /><span class="text-wine">taip</span>!
         </p>
       </div>
     </section>
 
-    <!-- Red section — slides under the hero -->
+    <!-- Red section — height is content-driven (width-based padding), NOT viewport-height,
+         so the space around the content + the clip edge scale with the frame like everything else -->
     <section
-      class="relative max-w-[900px] mx-auto min-h-[100svh] bg-wine overflow-hidden flex flex-col items-center justify-center"
+      class="relative max-w-[900px] mx-auto py-[35%] bg-wine overflow-hidden flex flex-col items-center"
       style="z-index: 0;"
     >
       <!-- Centered content column -->
@@ -53,41 +60,43 @@ import Layout from "../layouts/Layout.astro";
         class="relative z-10 flex flex-col items-center gap-4 px-8 text-center"
       >
         <p
-          class="font-raleway text-sand"
-          style="font-size: clamp(0.8rem, 2vw, 1.4rem);"
+          class="font-raleway text-sand leading-[1.06] max-w-[9em]"
+          style="font-size: clamp(2rem, 8cqw, 3.4rem);"
         >
-          Su dideliu džiaugsmu norime<br />pakviesti Jus į savo vestuves
+          Su dideliu džiaugsmu norime pakviesti Jus į savo vestuves
         </p>
         <img
           src="/assets/calendar.png"
           alt="Data"
-          class="w-[40%] max-w-[200px]"
+          class="w-[90%]"
         />
         <p
-          class="font-raleway text-sand"
-          style="font-size: clamp(0.8rem, 2vw, 1.4rem);"
+          class="font-raleway text-sand leading-[1.06] max-w-[9em]"
+          style="font-size: clamp(2rem, 8cqw, 3.4rem);"
         >
           Labai jūsų lauksime!
         </p>
+        <!-- disco balls anchored to the content block (not the full-height section),
+             so their vertical position tracks the text/calendar at every screen size -->
+        <img
+          src="/assets/disco.svg"
+          alt=""
+          aria-hidden="true"
+          class="absolute -z-10 w-[50%] -top-[55%] -left-[6%]"
+        />
+        <img
+          src="/assets/disco.svg"
+          alt=""
+          aria-hidden="true"
+          class="absolute -z-10 w-[50%] top-[62%] -right-[6%]"
+        />
+        <img
+          src="/assets/disco.svg"
+          alt=""
+          aria-hidden="true"
+          class="absolute -z-10 w-[30%] -top-[30%] right-[2%]"
+        />
       </div>
-      <img
-        src="/assets/disco.svg"
-        alt=""
-        aria-hidden="true"
-        class="absolute w-[28%] top-0 left-[4%]"
-      />
-      <img
-        src="/assets/disco-long.svg"
-        alt=""
-        aria-hidden="true"
-        class="absolute w-[22%] top-0 left-[40%]"
-      />
-      <img
-        src="/assets/disco.svg"
-        alt=""
-        aria-hidden="true"
-        class="absolute w-[30%] top-0 left-[68%]"
-      />
     </section>
 
     <!-- ===== PANEL 3: Detalės + Greetings + RSVP (min one screen, grows taller) ===== -->
@@ -106,7 +115,7 @@ import Layout from "../layouts/Layout.astro";
 
       <h2
         class="font-playfair font-bold text-center tracking-[0.15em] relative z-10"
-        style="font-size: clamp(2rem, 7vw, 3.5rem);"
+        style="font-size: clamp(2rem, 7cqw, 3.5rem);"
       >
         DETALĖS
       </h2>
@@ -121,18 +130,18 @@ import Layout from "../layouts/Layout.astro";
       <!-- schedule -->
       <div class="relative z-10 flex flex-col items-center text-center gap-7 pt-[30%] sm:pt-[24%]">
         <div>
-          <p class="font-raleway font-bold" style="font-size: clamp(1.1rem, 3vw, 1.6rem);">
+          <p class="font-raleway font-bold" style="font-size: clamp(1.1rem, 3cqw, 1.6rem);">
             14:00 – Santuoka
           </p>
-          <p class="font-raleway text-neutral-800" style="font-size: clamp(0.85rem, 2.2vw, 1.15rem);">
+          <p class="font-raleway text-neutral-800" style="font-size: clamp(0.85rem, 2.2cqw, 1.15rem);">
             Kauno Švč. Mergelės Ėmimo į<br />dangų bažnyčia (Vytauto Didžiojo)
           </p>
         </div>
         <div>
-          <p class="font-raleway font-bold" style="font-size: clamp(1.1rem, 3vw, 1.6rem);">
+          <p class="font-raleway font-bold" style="font-size: clamp(1.1rem, 3cqw, 1.6rem);">
             17:00 – Šventė
           </p>
-          <p class="font-raleway text-neutral-800" style="font-size: clamp(0.85rem, 2.2vw, 1.15rem);">
+          <p class="font-raleway text-neutral-800" style="font-size: clamp(0.85rem, 2.2cqw, 1.15rem);">
             Vynvytis Studio<br />R. Kalantos g. 34A, Kaunas
           </p>
         </div>
@@ -150,36 +159,29 @@ import Layout from "../layouts/Layout.astro";
         class="absolute top-[2%] -right-[14%] w-[40%] pointer-events-none" />
       <!-- big puffy star lower-left -->
       <img src="/assets/star-1.svg" alt="" aria-hidden="true"
-        class="absolute top-[42%] left-[4%] w-[25%] pointer-events-none" />
+        class="absolute top-[5%] left-[4%] w-[25%] pointer-events-none" />
       <!-- 5-point star lower-right -->
       <img src="/assets/star-2.svg" alt="" aria-hidden="true"
-        class="absolute top-[60%] right-[7%] w-[25%] pointer-events-none" />
+        class="absolute top-[90%] right-[5%] w-[25%] pointer-events-none" />
 
       <div class="relative z-10 flex flex-col items-center text-center gap-9">
-        <p class="font-raleway" style="font-size: clamp(1rem, 2.6vw, 1.4rem);">
+        <p class="font-raleway" style="font-size: clamp(1rem, 2.6cqw, 1.4rem);">
           Sveikinimai vyks šventėje!
         </p>
 
         <div class="flex flex-col items-center gap-4">
-          <p class="font-raleway" style="font-size: clamp(1rem, 2.6vw, 1.4rem);">
+          <p class="font-raleway" style="font-size: clamp(1rem, 2.6cqw, 1.4rem);">
             Dress code – spalvos:
           </p>
-          <div class="flex items-center gap-4">
-            {[ '#D1562D', '#F49FB8', '#1A1A1A', '#6F6E2A' ].map((c) => (
-              <svg viewBox="0 0 100 100" class="w-9 h-9 sm:w-11 sm:h-11" aria-hidden="true">
-                <path
-                  d="M50 3 L61 39 L97 50 L61 61 L50 97 L39 61 L3 50 L39 39 Z"
-                  fill={c}
-                  stroke="#1A1A1A"
-                  stroke-width="4"
-                  stroke-linejoin="round"
-                />
-              </svg>
+          <div class="flex items-center gap-2">
+            {[ 'color1', 'color2', 'color3', 'color4' ].map((c) => (
+              <img src={`/assets/${c}.png`} alt="" aria-hidden="true"
+                class="w-9 h-9 sm:w-11 sm:h-11 object-contain" />
             ))}
           </div>
         </div>
 
-        <p class="font-raleway text-neutral-800 max-w-[28rem]" style="font-size: clamp(0.9rem, 2.3vw, 1.2rem);">
+        <p class="font-raleway text-neutral-800 max-w-[28rem]" style="font-size: clamp(0.9rem, 2.3cqw, 1.2rem);">
           Geriausia dovana – Jūsų buvimas šalia…ir ta, kuri telpa į vokelį.
           Gėlės – tegul jos žydi pievose!
         </p>
@@ -191,12 +193,12 @@ import Layout from "../layouts/Layout.astro";
     </section>
 
     <!-- ===== RSVP + closing ===== -->
-    <section class="relative max-w-[900px] mx-auto px-6 pt-8 pb-0">
+    <section class="relative max-w-[900px] mx-auto px-6 pt-8 pb-12">
       <div class="relative z-10 flex flex-col items-center text-center gap-7">
         <!-- shooting star between the date and the button, on the left -->
         <img src="/assets/star-3.svg" alt="" aria-hidden="true"
-          class="absolute left-[14%] top-[36%] w-[25%] -rotate-6 pointer-events-none" />
-        <p class="font-raleway" style="font-size: clamp(0.95rem, 2.4vw, 1.25rem);">
+          class="absolute left-[4%] top-[26%] w-[25%] -rotate-6 pointer-events-none" />
+        <p class="font-raleway" style="font-size: clamp(0.95rem, 2.4cqw, 1.25rem);">
           Atsakymų lauksime iki 2026 m.<br />liepos 1 d.
         </p>
 
@@ -204,20 +206,54 @@ import Layout from "../layouts/Layout.astro";
         <a
           href="#rsvp"
           class="inline-block bg-wine text-sand font-playfair font-bold tracking-[0.2em] rounded-full shadow-md hover:brightness-110 transition px-16 py-3"
-          style="font-size: clamp(1.3rem, 4vw, 2rem);"
+          style="font-size: clamp(1.3rem, 4cqw, 2rem);"
         >
           RSVP
         </a>
       </div>
 
       <!-- fat cat snoozing on a cloud at the very bottom -->
-      <div class="relative z-0 mt-6 ml-[2%] w-[64%] max-w-[440px]">
+      <div class="relative z-0 mt-20 ml-[2%] w-[64%] max-w-[440px]">
         <img src="/assets/cloud-3-t.png" alt="" aria-hidden="true" class="w-full" />
-        <img src="/assets/fat-cat-t.png" alt="" aria-hidden="true"
-          class="absolute bottom-[30%] left-1/2 -translate-x-1/2 w-[92%]" />
+        <img src="/assets/fat-cat-irl.png" alt="" aria-hidden="true"
+          class="absolute -bottom-[35%] left-1/2 -translate-x-1/2 w-[92%]" />
       </div>
     </section>
     </div>
     <!-- ===== end PANEL 3 ===== -->
-  </div>
+    </div><!-- end phone canvas -->
+  </div><!-- end desktop backdrop -->
 </Layout>
+
+<style>
+  /* Cartoon velvet curtain — bold folds via hard-stop gradient bands */
+  .curtain {
+    background-color: #a80805;
+    background-image: repeating-linear-gradient(
+      90deg,
+      #3d0101 0px,
+      #6b0402 8px,
+      #a80805 30px,
+      #e02216 52px,   /* bright fold highlight */
+      #a80805 74px,
+      #6b0402 96px,
+      #3d0101 104px
+    );
+  }
+
+  /* Scalloped valance swagging across the top */
+  .curtain::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    z-index: 1;
+    background:
+      radial-gradient(circle 30px at 30px 30px, #5e0202 29px, transparent 30px)
+        bottom left / 60px 34px repeat-x,
+      linear-gradient(#2f0101, #5e0202) top left / 100% 58px no-repeat;
+    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.45));
+  }
+</style>
