@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GutterDecor from "../components/GutterDecor.astro";
+---
+
+<Layout title="RSVP">
+  <!-- same full-page backdrop + gutter decorations as the landing -->
+  <div class="relative min-h-screen w-full flex justify-center bg-sand overflow-hidden">
+    <GutterDecor stars={12} clouds={3} />
+
+    <!-- phone-width canvas (container so the form's cqw sizes scale like the invite) -->
+    <div
+      class="relative z-10 w-full max-w-[480px] min-h-screen bg-sand shadow-2xl overflow-hidden flex flex-col items-center justify-center"
+      style="container-type: inline-size;"
+    >
+      <!-- top decorations (like the landing) -->
+      <img src="/assets/star-5.svg" alt="" aria-hidden="true"
+        class="absolute top-[3%] left-[6%] w-[20%] pointer-events-none" />
+      <img src="/assets/cloud-8-t.png" alt="" aria-hidden="true"
+        class="absolute top-[1%] right-[3%] w-[38%] pointer-events-none" />
+      <img src="/assets/star-3.svg" alt="" aria-hidden="true"
+        class="absolute top-[11%] right-[6%] w-[22%] -rotate-12 pointer-events-none" />
+      <!-- bottom decorations -->
+      <img src="/assets/cloud-3-t.png" alt="" aria-hidden="true"
+        class="absolute bottom-[1%] left-[35%] -translate-x-1/2 w-[70%] pointer-events-none" />
+      <img src="/assets/star-2.svg" alt="" aria-hidden="true"
+        class="absolute bottom-[6%] right-[7%] w-[20%] pointer-events-none" />
+      <img src="/assets/star-5.svg" alt="" aria-hidden="true"
+        class="absolute bottom-[14%] left-[7%] w-[23%] rotate-[20deg] pointer-events-none" />
+
+      <a href="/" class="absolute top-4 left-4 z-20 font-raleway underline text-wine" style="font-size: clamp(0.85rem, 3.5cqw, 1rem);">
+        ← Atgal
+      </a>
+
+      <!-- content -->
+      <div class="relative z-10 w-full flex flex-col items-center text-center gap-7 px-6 py-24">
+        <h1 class="font-playfair font-black text-wine leading-[1.05]" style="font-size: clamp(2.4rem, 13cqw, 3.4rem);">
+          RSVP
+        </h1>
+        <p class="font-raleway" style="font-size: clamp(0.95rem, 4cqw, 1.25rem);">
+          Atsakymų lauksime iki 2026 m.<br />liepos 1 d.
+        </p>
+
+        <!-- Netlify form — submissions land in Netlify dashboard → Forms → "rsvp" -->
+        <form
+          name="rsvp"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/aciu"
+          class="w-full flex flex-col gap-5 text-left font-raleway"
+        >
+          <input type="hidden" name="form-name" value="rsvp" />
+          <p class="hidden">
+            <label>Nepildykite šito laukelio: <input name="bot-field" /></label>
+          </p>
+
+          <label class="flex flex-col gap-1">
+            <span class="font-bold" style="font-size: clamp(1rem, 4cqw, 1.25rem);">Vardai <span class="text-wine">*</span></span>
+            <span class="text-neutral-600" style="font-size: clamp(0.78rem, 3cqw, 0.95rem);">Po vieną eilutėje – vienas žmogus gali užpildyti už visą šeimą</span>
+            <textarea name="vardai" rows="4" required
+              class="rounded-2xl border-2 border-wine/40 bg-white/70 px-4 py-3 focus:border-wine focus:outline-none"
+              style="font-size: clamp(0.95rem, 3.6cqw, 1.15rem);"></textarea>
+          </label>
+
+          <label class="flex flex-col gap-1">
+            <span class="font-bold" style="font-size: clamp(1rem, 4cqw, 1.25rem);">Žinutė</span>
+            <span class="text-neutral-600" style="font-size: clamp(0.78rem, 3cqw, 0.95rem);">Kas rašys – tas ne gaidys</span>
+            <textarea name="zinute" rows="3"
+              class="rounded-2xl border-2 border-wine/40 bg-white/70 px-4 py-3 focus:border-wine focus:outline-none"
+              style="font-size: clamp(0.95rem, 3.6cqw, 1.15rem);"></textarea>
+          </label>
+
+          <!-- TEMP MOCK: routes straight to /aciu without submitting. Remove this onclick to enable the real Netlify submission. -->
+          <button type="submit"
+            onclick="event.preventDefault(); window.location.href='/aciu';"
+            class="self-center mt-1 bg-wine text-sand font-playfair font-black tracking-[0.04em] rounded-full shadow-md hover:brightness-110 transition px-14 py-3"
+            style="font-size: clamp(1.5rem, 7cqw, 2.2rem);">
+            Siųsti
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>

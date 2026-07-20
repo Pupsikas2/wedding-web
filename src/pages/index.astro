@@ -1,18 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import GutterDecor from "../components/GutterDecor.astro";
 ---
 
 <Layout title="Wedding">
-  <!-- desktop backdrop: pure-CSS cartoon velvet curtain filling the gutters beside the phone canvas -->
-  <div class="curtain relative min-h-screen w-full flex justify-center">
+  <!-- full-page backdrop: clouds & stars scattered down the desktop gutters beside the phone canvas -->
+  <div class="relative min-h-screen w-full flex justify-center bg-sand overflow-hidden">
+    <!-- ===== desktop-only gutter decorations (shared with /rsvp) ===== -->
+    <GutterDecor />
+
     <!-- phone-width canvas — a CSS container, so all cqw font sizes scale to THIS width, not the browser window -->
     <div
-      class="relative w-full max-w-[480px] bg-sand overflow-hidden shadow-2xl"
+      class="relative z-10 w-full max-w-[480px] bg-sand shadow-2xl"
       style="container-type: inline-size;"
     >
-    <nav class="w-full h-8 bg-wine relative z-10"></nav>
 
-    <section class="relative max-w-[900px] mx-auto z-10 min-h-[calc(100svh-2rem)]">
+    <section
+      class="relative max-w-[900px] mx-auto z-10 bg-sand flex flex-col items-center justify-center"
+      style="min-height: max(100svh, 210cqw);"
+    >
       <!-- ===== decorations, anchored to the full-height hero panel ===== -->
       <!-- top-left star -->
       <img src="/assets/star-1.svg" alt="" aria-hidden="true"
@@ -34,7 +40,7 @@ import Layout from "../layouts/Layout.astro";
         class="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[70%] pointer-events-none" />
 
       <!-- ===== centered content: mirror + heading ===== -->
-      <div class="relative z-10 flex flex-col items-center justify-center min-h-[calc(100svh-2rem)] px-6">
+      <div class="relative z-10 flex flex-col items-center px-6 w-full">
         <img
           src="/assets/lovers.svg"
           alt="Jaunieji"
@@ -52,7 +58,7 @@ import Layout from "../layouts/Layout.astro";
     <!-- Red section — height is content-driven (width-based padding), NOT viewport-height,
          so the space around the content + the clip edge scale with the frame like everything else -->
     <section
-      class="relative max-w-[900px] mx-auto py-[35%] bg-wine overflow-hidden flex flex-col items-center"
+      class="relative max-w-[900px] mx-auto py-[35%] bg-wine flex flex-col items-center"
       style="z-index: 0;"
     >
       <!-- Centered content column -->
@@ -82,19 +88,21 @@ import Layout from "../layouts/Layout.astro";
           src="/assets/disco.svg"
           alt=""
           aria-hidden="true"
-          class="absolute -z-10 w-[50%] -top-[55%] -left-[6%]"
+          class="swing absolute -z-10 w-[50%] -top-[55%] -left-[6%]"
         />
         <img
           src="/assets/disco.svg"
           alt=""
           aria-hidden="true"
-          class="absolute -z-10 w-[50%] top-[62%] -right-[6%]"
+          class="swing absolute -z-10 w-[50%] top-[62%] -right-[6%]"
+          style="animation-delay: -1.6s;"
         />
         <img
           src="/assets/disco.svg"
           alt=""
           aria-hidden="true"
-          class="absolute -z-10 w-[30%] -top-[30%] right-[2%]"
+          class="swing absolute -z-10 w-[30%] -top-[30%] right-[2%]"
+          style="animation-delay: -0.8s;"
         />
       </div>
     </section>
@@ -114,14 +122,14 @@ import Layout from "../layouts/Layout.astro";
         class="absolute bottom-[7%] right-[7%] w-[25%] pointer-events-none" />
 
       <h2
-        class="font-playfair font-bold text-center tracking-[0.15em] relative z-10"
+        class="font-playfair font-bold text-center tracking-[0.15em] relative z-10 -mt-4"
         style="font-size: clamp(2rem, 7cqw, 3.5rem);"
       >
         DETALĖS
       </h2>
 
       <!-- ginger cat lounging on a cloud, upper right -->
-      <div class="absolute right-[1%] top-[35%] w-[44%] pointer-events-none">
+      <div class="float-hover absolute right-[1%] top-[35%] w-[44%] pointer-events-none">
         <img src="/assets/cloud-2-t.png" alt="" aria-hidden="true" class="w-full" />
         <img src="/assets/ginger-cat-t.png" alt="" aria-hidden="true"
           class="absolute -bottom-[30%] left-1/2 -translate-x-1/2 w-[86%] max-w-[250px]" />
@@ -182,7 +190,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
 
         <p class="font-raleway text-neutral-800 max-w-[28rem]" style="font-size: clamp(0.9rem, 2.3cqw, 1.2rem);">
-          Geriausia dovana – Jūsų buvimas šalia…ir ta, kuri telpa į vokelį.
+          Geriausia dovana – Jūsų buvimas šalia…ir ta, kuri<br />telpa į vokelį.
           Gėlės – tegul jos žydi pievose!
         </p>
       </div>
@@ -202,21 +210,21 @@ import Layout from "../layouts/Layout.astro";
           Atsakymų lauksime iki 2026 m.<br />liepos 1 d.
         </p>
 
-        <!-- TODO: point href at your RSVP form (Google Forms / Typeform / mailto) -->
+        <!-- RSVP form lives on its own page (/rsvp) -->
         <a
-          href="#rsvp"
-          class="inline-block bg-wine text-sand font-playfair font-bold tracking-[0.2em] rounded-full shadow-md hover:brightness-110 transition px-16 py-3"
-          style="font-size: clamp(1.3rem, 4cqw, 2rem);"
+          href="/rsvp"
+          class="inline-block bg-wine text-sand font-playfair font-black tracking-[0.04em] rounded-full shadow-md hover:brightness-110 transition px-16 py-3"
+          style="font-size: clamp(1.8rem, 6cqw, 2.8rem);"
         >
           RSVP
         </a>
       </div>
 
       <!-- fat cat snoozing on a cloud at the very bottom -->
-      <div class="relative z-0 mt-20 ml-[2%] w-[64%] max-w-[440px]">
+      <div class="float-hover relative z-0 mt-20 ml-[2%] w-[64%] max-w-[440px]">
         <img src="/assets/cloud-3-t.png" alt="" aria-hidden="true" class="w-full" />
-        <img src="/assets/fat-cat-irl.png" alt="" aria-hidden="true"
-          class="absolute -bottom-[35%] left-1/2 -translate-x-1/2 w-[92%]" />
+        <img src="/assets/fat-cat.png" alt="" aria-hidden="true"
+          class="absolute -bottom-[35%] left-1/2 -translate-x-1/2 w-[60%]" />
       </div>
     </section>
     </div>
@@ -226,34 +234,26 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-  /* Cartoon velvet curtain — bold folds via hard-stop gradient bands */
-  .curtain {
-    background-color: #a80805;
-    background-image: repeating-linear-gradient(
-      90deg,
-      #3d0101 0px,
-      #6b0402 8px,
-      #a80805 30px,
-      #e02216 52px,   /* bright fold highlight */
-      #a80805 74px,
-      #6b0402 96px,
-      #3d0101 104px
-    );
+  /* gentle pendulum swing for the disco balls in the red section */
+  .swing {
+    transform-origin: top center;
+    animation: swing 4.5s ease-in-out infinite;
+  }
+  @keyframes swing {
+    0%, 100% { transform: rotate(-6deg); }
+    50%      { transform: rotate(6deg); }
   }
 
-  /* Scalloped valance swagging across the top */
-  .curtain::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 90px;
-    z-index: 1;
-    background:
-      radial-gradient(circle 30px at 30px 30px, #5e0202 29px, transparent 30px)
-        bottom left / 60px 34px repeat-x,
-      linear-gradient(#2f0101, #5e0202) top left / 100% 58px no-repeat;
-    filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.45));
+  /* gentle up-and-down hover for the cat-on-cloud */
+  .float-hover {
+    animation: floaty 4s ease-in-out infinite;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-10px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .swing, .float-hover { animation: none; }
   }
 </style>

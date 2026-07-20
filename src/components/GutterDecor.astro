@@ -1,0 +1,63 @@
+---
+// Desktop gutter decorations (stars + drifting clouds) shared by the landing and RSVP pages.
+// Place inside a full-width `flex justify-center` backdrop, beside the centred canvas.
+
+// How many of each to scatter — override per page, e.g. <GutterDecor stars={18} clouds={3} />
+const { stars = 37, clouds = 6 } = Astro.props;
+
+// Deterministic pseudo-random (stable across builds) for a natural scatter.
+const rand = (n) => {
+  const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
+  return x - Math.floor(x);
+};
+
+const STARS = ['star-2.svg', 'star-3.svg', 'star-5.svg'];
+
+// Stars — each gets its own evenly-spaced vertical band (+ jitter); side/offset random.
+const STAR_COUNT = stars;
+const gutterStars = Array.from({ length: STAR_COUNT }, (_, i) => ({
+  s: STARS[Math.floor(rand(i * 3 + 1) * STARS.length)],
+  t: ((i + rand(i * 5 + 2) * 0.6) / STAR_COUNT) * 98,
+  side: rand(i * 7 + 3) < 0.5 ? 'left' : 'right',
+  o: 1 + rand(i * 11 + 4) * 22,
+  w: 6 + rand(i * 13 + 5) * 4,
+  r: rand(i * 17 + 6) * 360,
+}));
+
+// Big clouds drifting right→left, passing behind the centre content.
+const CLOUD_COUNT = clouds;
+const driftClouds = Array.from({ length: CLOUD_COUNT }, (_, i) => ({
+  s: ['cloud-2-fill.png', 'cloud-3-fill.png', 'cloud-4-fill.png', 'cloud-6-fill.png', 'cloud-8-fill.png'][i % 5],
+  t: (i / CLOUD_COUNT) * 92 + rand(i * 17 + 6) * 6,
+  w: 17 + rand(i * 17 + 7) * 14,
+  dur: 45 + rand(i * 23 + 8) * 45,
+  delay: -(rand(i * 35 + 13) * 60),
+}));
+---
+
+{gutterStars.map((d) => (
+  <img src={`/assets/${d.s}`} alt="" aria-hidden="true"
+    class="hidden lg:block absolute pointer-events-none"
+    style={`top:${d.t}%; ${d.side}:${d.o}%; width:${d.w}%; transform: rotate(${d.r}deg);`} />
+))}
+{driftClouds.map((d) => (
+  <img src={`/assets/${d.s}`} alt="" aria-hidden="true"
+    class="drift hidden lg:block absolute left-full pointer-events-none"
+    style={`top:${d.t}%; width:${d.w}%; animation-duration:${d.dur}s; animation-delay:${d.delay}s;`} />
+))}
+
+<style>
+  .drift {
+    animation-name: drift;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-100vw - 100%)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .drift { animation: none; }
+  }
+</style>
