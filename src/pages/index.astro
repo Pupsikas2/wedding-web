@@ -234,14 +234,18 @@ import GutterDecor from "../components/GutterDecor.astro";
 </Layout>
 
 <style>
-  /* gentle pendulum swing for the disco balls in the red section */
+  /* gentle pendulum swing for the disco balls in the red section.
+     translateZ(0) + will-change force a stable GPU layer so the ball
+     doesn't render half-painted until a repaint (Safari compositing glitch). */
   .swing {
     transform-origin: top center;
     animation: swing 4.5s ease-in-out infinite;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   @keyframes swing {
-    0%, 100% { transform: rotate(-6deg); }
-    50%      { transform: rotate(6deg); }
+    0%, 100% { transform: rotate(-6deg) translateZ(0); }
+    50%      { transform: rotate(6deg) translateZ(0); }
   }
 
   /* gentle up-and-down hover for the cat-on-cloud */
