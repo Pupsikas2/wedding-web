@@ -1,0 +1,17 @@
+<!--
+  Static form definition so Netlify reliably DETECTS the "rsvp" form at build time.
+  Astro's component-rendered form on /rsvp isn't always picked up by Netlify's scanner;
+  this bare copy (same name + field names) guarantees it. The real, styled form lives in
+  src/pages/rsvp.astro and is matched to this one by the form name.
+-->
+<html>
+  <head><meta charset="utf-8" /></head>
+  <body>
+    <form name="rsvp" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="rsvp" />
+      <input name="bot-field" />
+      <textarea name="vardai"></textarea>
+      <textarea name="zinute"></textarea>
+    </form>
+  </body>
+</html>
